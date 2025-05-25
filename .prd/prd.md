@@ -11,17 +11,17 @@ Here's a breakdown of what to include, tailored for informing an AI coding assis
      * **Development:** Languages (Python, JS), Frameworks (React/Next.js), Databases (SQL, PostgreSQL), Tools (Git, Docker, MCP).
      * **Prompt Engineering:**
        LLMs used:
-       Creative Writing	: Gemini 2.5 Pro & 2.5 Preview
+       Creative Writing	  : Gemini 2.5 Pro & 2.5 Preview
        Coding          		: Claude 3.7 Sonnet, Gemini 2.5 Pro, Mistral's Devstrall
        Images          		: Leonardo AI, ComfyUI, Google Imagen
        Videos          		: Google Veo 2
-       Music			: Suno AI
+       Music			        : Suno AI
        Experimentations	: Deepseek and Qwen Models
      * **Prompting Techniques**: Few-shot, Chain-of-Thought, Iterative, Zero-shot with Rich Context Provision.
        Use Cases: Code gen, creative writing for documentations, AI Image generations, AI Video Generations
      * **Other Relevant Skills:** UI design, project management, technical writing.
    * **Personal Brand/Vibe:** What feeling should your portfolio convey?
-     "modern," "minimalist," "tech-forward," "innovative," "approachable," "expert," "creative," "clean," "professional."
+     "modern," "minimalist," "tech-innovative," "approachable," "creative," "clean," "professional."
 2. **Website Purpose & Goals:**
 
    * **Primary Goal:** (showcase expertise to the community, attract freelance clients, find a full-time job).
@@ -36,10 +36,11 @@ Here's a breakdown of what to include, tailored for informing an AI coding assis
    * **Homepage:** Overview, highlights, snipptets of experties.
    * **About Me:** More detailed version of the bio, perhaps with your journey/philosophy.
    * **Portfolio/Projects:** The core.
-   * **Skills:** Integrated into About me (core), and Project's skills used
+   * **Skills:** Integrated into About me (core), and Project's skills-used
    * **Blog/Articles:** i plan to make this, but not on the current web creation, so no.
    * **Contact:** How people can reach you (whatsapp social links, email).
    * **Resume/CV:** (Link to a PDF).
+
 2. **Portfolio Projects (Crucial Detail!):**
    For *each* project you want to feature, provide:
 
@@ -52,6 +53,7 @@ Here's a breakdown of what to include, tailored for informing an AI coding assis
    * **Links:** GitHub repo, live demo (if any).
    * **Visuals:** Mention if you have screenshots, mockups, or videos. If not, ask the AI to suggest placeholder types.
      * *Example for AI:* "For Project X, I need a section displaying its title, a short description, a list of tech used, and a link to its GitHub. Suggest a layout for this project card."
+     
 3. **Content Tone & Style:**
 
    * Formal, informal, conversational, technical, witty?
@@ -61,21 +63,23 @@ Here's a breakdown of what to include, tailored for informing an AI coding assis
 
 1. **Design Preferences (Visuals):**
 
-   * **Overall Aesthetic:** (Refer back to "Personal Brand/Vibe" keywords: minimalist, dark mode, light mode, colorful, brutalist, etc.).
-   * **Color Palette (if you have one):** Primary, secondary, accent colors. Or ask the AI for suggestions based on your vibe.
+   * **Overall Aesthetic:** Refer back to "Personal Brand/Vibe" keywords
+   * **Color Palette (if you have one):** 
+    Primary: rgb(13,17,23) 
+    secondary: rgb(118,70,168) 
+    colours of primary and secondary are from the looks of my github profile
    * **Typography (if you have preferences):** Sans-serif for readability is common for tech.
-   * **Inspiration Websites (Links):** Show the AI examples of portfolios you like the look and feel of. "I like the project layout on site A, the navigation on site B, and the overall color scheme of site C."
+   * **Inspiration Websites (Links):** i like the view of my github profile. the github's dark colour and my profile's neon colours ( purples, bright whites, etc. ) ![1748165750657](image/prd/1748165750657.png)
 2. **Technical Constraints & Preferences:**
 
    * **Platform:** GitHub Pages (you've decided this).
-   * **Static Site Generator (Optional but Recommended for GitHub Pages):** Jekyll, Hugo, Eleventy, or just plain HTML/CSS/JS. If you're using AI to generate code, vanilla HTML/CSS/JS might be simplest to start, or Jekyll if you want blogging.
-     * *Example for AI:* "Generate the HTML and CSS for a responsive navigation bar using plain CSS, no frameworks." OR "Help me set up a basic Jekyll structure for my portfolio."
+   * **Static Site Generator (Optional but Recommended for GitHub Pages):** just plain HTML/CSS/JS.
    * **Responsiveness:** Must be mobile-friendly.
    * **Accessibility (a11y):** Aim for good practices (semantic HTML, alt text).
    * **Specific Features:**
-     * Contact form (e.g., using Formspree or a similar service for static sites).
-     * Code syntax highlighting for any code snippets.
-     * Dark/Light mode toggle?
+     * Whatsapp quick message to my number.
+     * provide high-level overview of the portfolio showcases.
+     * Modern Dark Web
 
 **IV. Instructions for the AI**
 
