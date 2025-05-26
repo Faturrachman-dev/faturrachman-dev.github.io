@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: |
+          npm install -g html-minifier-terser clean-css-cli terser
+
+      - name: Optimize HTML
+        run: |
+          html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o index.min.html index.html
+          mv index.min.html index.html
+
+      - name: Optimize CSS
+        run: |
+          cleancss -o css/styles.min.css css/styles.css
+          mv css/styles.min.css css/styles.css
+
+      - name: Optimize JavaScript
+        run: |
+          terser js/main.js -o js/main.min.js --compress --mangle
+          mv js/main.min.js js/main.js
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          branch: gh-pages
+          clean: true 
