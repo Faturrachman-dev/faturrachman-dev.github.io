@@ -6,13 +6,18 @@
     <title>Faturrachman | Developer & Prompt Engineer</title>
     <meta name="description" content="Portfolio of Faturrachman, an innovative developer and AI prompt architect specializing in Python and leveraging LLMs for creative and technical solutions.">
     
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="images/1748214681599.jpg" as="image">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -45,7 +50,7 @@
     <section id="home" class="hero-section">
         <div class="container">
             <div class="profile-image">
-                <img src="images/1748214681599.jpg" alt="Faturrachman - Developer & Prompt Engineer">
+                <img src="images/1748214681599.jpg" alt="Faturrachman profile photo" width="150" height="150">
             </div>
             <h1>Faturrachman</h1>
             <h2>Innovative Developer & AI Prompt Architect</h2>
@@ -66,17 +71,17 @@
                     <p>I'm Faturrachman, a developer specializing in Python and a prompt engineer focused on leveraging LLMs for creative and technical solutions. I love building intuitive applications and exploring the intersection of code and AI.</p>
                     <p>With experience in various technologies and a passion for innovative solutions, I strive to create efficient, user-friendly applications that solve real-world problems.</p>
                     <div class="resume-download">
-                        <a href="files/faturrachman_resume.pdf" download class="btn btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
+                        <a href="#" class="btn btn-secondary" aria-label="Download Resume"><i class="fas fa-download"></i> Download Resume</a>
                     </div>
                 </div>
                 <div class="about-stats">
                     <div class="stat">
-                        <i class="fas fa-code"></i>
+                        <i class="fas fa-code" aria-hidden="true"></i>
                         <h3>Development</h3>
                         <p>Building robust and scalable applications with modern technologies</p>
                     </div>
                     <div class="stat">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-robot" aria-hidden="true"></i>
                         <h3>AI Engineering</h3>
                         <p>Crafting effective prompts and integrating AI capabilities</p>
                     </div>
@@ -90,10 +95,10 @@
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
-                <!-- CursorView Project -->
+                <!-- Project 1: CursorView -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/projects/cursorview-thumbnail.jpg" alt="CursorView: AI-Powered Chat Session Explorer" loading="lazy">
+                        <img src="images/projects/project-cursor-view.jpg" alt="CursorView: AI-Powered Chat Session Explorer" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">CursorView: AI-Powered Chat Session Explorer</h3>
@@ -102,20 +107,40 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Flask</span>
                             <span class="tech-tag">React</span>
+                            <span class="tech-tag">Material-UI</span>
                             <span class="tech-tag">SQLite</span>
                         </div>
-                        <button class="project-details-btn">View Details</button>
+                        <button class="project-details-btn" aria-label="View details for CursorView project">View Details</button>
                     </div>
                     <div class="project-details">
                         <div class="details-content">
                             <h4>CursorView: AI-Powered Chat Session Explorer</h4>
-                            <p class="details-challenge"><strong>The Challenge:</strong> Developers using Cursor often need a more robust and visually intuitive way to browse and manage their extensive chat session histories than the native UI provides, facing limitations in search, organization, and overall user experience. There was also an inability to comprehensively export Cursor chat sessions, particularly with the inclusion of detailed agent interactions like MCP calls and tool usage.</p>
+                            <p>A web application that allows users to seamlessly browse, search, and manage all their Cursor AI chat sessions aggregated across multiple projects from a centralized interface.</p>
                             
-                            <p class="details-solution"><strong>The Solution:</strong> This project delivers CursorView, an elegant and intuitive web application that allows users to seamlessly browse, search, and manage all their Cursor AI chat sessions aggregated across multiple projects from a centralized interface. An integrated AI assistant analyzes chat content, providing users with valuable insights into their prompting techniques, AI response patterns, and personal interaction preferences.</p>
+                            <h5>The Challenge</h5>
+                            <ul>
+                                <li>Developers using Cursor often need a more robust and visually intuitive way to browse and manage their extensive chat session histories</li>
+                                <li>Inability to comprehensively export Cursor chat sessions with detailed agent interactions</li>
+                                <li>Difficulty extracting actionable insights from AI coding conversations</li>
+                            </ul>
+                            
+                            <h5>The Solution</h5>
+                            <ul>
+                                <li>Elegant and intuitive web application for chat session management</li>
+                                <li>Detailed chat view with rich metadata and MCP interaction display</li>
+                                <li>Integrated AI assistant that analyzes chat content and provides valuable insights</li>
+                            </ul>
                             
                             <div class="details-gallery">
-                                <img src="images/projects/cursorview-screenshot.jpg" alt="CursorView Interface" loading="lazy">
+                                <img src="images/projects/cursor-view-detail.jpg" alt="CursorView UI Screenshot" loading="lazy">
                             </div>
+                            
+                            <h5>Key Features</h5>
+                            <ul>
+                                <li>AI-Powered Conversation Analysis: Insights on prompt effectiveness and interaction patterns</li>
+                                <li>Comprehensive Chat Export: Full export capabilities including MCP interactions and tool calls</li>
+                                <li>Enhanced Visualization & Readability: Modern, clean UI for superior chat log viewing</li>
+                            </ul>
                             
                             <div class="details-tech-list">
                                 <h5>Technologies Used</h5>
@@ -123,128 +148,143 @@
                                     <li>Backend: Python (Flask), SQLite</li>
                                     <li>Frontend: React, JavaScript (ES6+), Material-UI</li>
                                     <li>Data Handling: JSON, Markdown</li>
-                                    <li>AI/LLM: Deepseek, Qwen, RAG Techniques</li>
+                                    <li>AI/LLM: Deepseek, Qwen models, RAG techniques</li>
                                     <li>DevOps/Tooling: Git, GitHub, Vite</li>
                                 </ul>
                             </div>
                             
-                            <h5>Key Features</h5>
-                            <ul class="details-features">
-                                <li>AI-Powered Conversation Analysis: Integrated RAG agent provides insights on prompt effectiveness and personal interaction patterns within your Cursor chats.</li>
-                                <li>Comprehensive Chat Export: Full export capabilities including detailed MCP interactions, tool calls, and agent messages, compatible with the latest Cursor agent features.</li>
-                                <li>Enhanced Visualization & Readability: A modern, clean UI for a superior chat log viewing experience compared to the native interface.</li>
-                            </ul>
-                            
                             <div class="details-links">
-                                <a href="https://github.com/Faturrachman-dev/cursor-view" class="btn btn-primary" target="_blank">GitHub Repo</a>
+                                <a href="https://github.com/Faturrachman-dev/cursor-view" class="btn btn-primary" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                             </div>
                         </div>
-                        <button class="details-close-btn">&times;</button>
+                        <button class="details-close-btn" aria-label="Close details">&times;</button>
                     </div>
                 </div>
                 
-                <!-- AI Generated Images Project -->
+                <!-- Project 2: AI Generated Images Gallery -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/projects/ai-gallery-thumbnail.jpg" alt="AI Generated Images Gallery" loading="lazy">
+                        <img src="images/projects/project-ai-gallery.jpg" alt="AI Generated Images Gallery" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">AI Generated Images Gallery</h3>
-                        <p class="project-description">A showcase of my AI-generated artwork created with various image generation models, complete with the prompts used to create each piece.</p>
+                        <p class="project-description">Collection of AI-generated images with prompts used for each image, showcasing prompt engineering skills for image generation.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Leonardo AI</span>
                             <span class="tech-tag">ComfyUI</span>
                             <span class="tech-tag">Google Imagen</span>
+                            <span class="tech-tag">Prompt Engineering</span>
                         </div>
-                        <button class="project-details-btn">View Details</button>
+                        <button class="project-details-btn" aria-label="View details for AI Generated Images Gallery project">View Details</button>
                     </div>
                     <div class="project-details">
                         <div class="details-content">
                             <h4>AI Generated Images Gallery</h4>
-                            <p>A collection of images created using various AI generation models, showcasing my prompt engineering skills and artistic direction. Each image includes the specific prompts used, demonstrating the art and science of crafting effective instructions for AI image generators.</p>
+                            <p>A showcase of AI-generated images along with the exact prompts used to create them, demonstrating advanced prompt engineering techniques for image generation models.</p>
+                            
+                            <h5>The Challenge</h5>
+                            <ul>
+                                <li>Creating visually compelling images using text-to-image AI models requires specialized prompt engineering skills</li>
+                                <li>Different AI image models respond to prompt structures in unique ways</li>
+                                <li>Lack of transparent examples showing prompts alongside results</li>
+                            </ul>
+                            
+                            <h5>The Solution</h5>
+                            <ul>
+                                <li>Curated gallery of AI-generated images paired with their prompts</li>
+                                <li>Demonstration of effective prompt structures for various styles and subjects</li>
+                                <li>Educational resource for others learning prompt engineering</li>
+                            </ul>
                             
                             <div class="details-gallery">
-                                <div class="gallery-grid">
-                                    <div class="gallery-item">
-                                        <img src="images/projects/ai-image-1.jpg" alt="AI Generated Image 1" loading="lazy">
-                                        <div class="image-prompt">
-                                            <h6>Prompt:</h6>
-                                            <p>"Cyberpunk cityscape at night with neon lights reflecting in puddles, 8k resolution, highly detailed, cinematic lighting"</p>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <img src="images/projects/ai-image-2.jpg" alt="AI Generated Image 2" loading="lazy">
-                                        <div class="image-prompt">
-                                            <h6>Prompt:</h6>
-                                            <p>"Fantasy landscape with floating islands and waterfalls, magic crystal formations, golden hour lighting, epic scale"</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <img src="images/projects/ai-gallery-detail.jpg" alt="AI Gallery Example Image" loading="lazy">
                             </div>
                             
+                            <h5>Key Features</h5>
+                            <ul>
+                                <li>Comprehensive prompt analysis and breakdown</li>
+                                <li>Comparison of different AI models with the same prompts</li>
+                                <li>Categorized image collection spanning multiple styles and subjects</li>
+                            </ul>
+                            
                             <div class="details-tech-list">
-                                <h5>Technologies & Models Used</h5>
+                                <h5>Technologies Used</h5>
                                 <ul>
-                                    <li>Leonardo AI</li>
-                                    <li>Google Imagen</li>
-                                    <li>ComfyUI</li>
-                                    <li>Prompt Engineering Techniques</li>
+                                    <li>Image Generation: Leonardo AI, ComfyUI, Google Imagen</li>
+                                    <li>Prompt Engineering: Structured prompts, parameter optimization</li>
+                                    <li>Image Processing: Photoshop, GIMP</li>
                                 </ul>
                             </div>
                             
-                            <h5>Skills Demonstrated</h5>
-                            <ul class="details-features">
-                                <li>Prompt Construction & Optimization</li>
-                                <li>Style Direction & Consistency</li>
-                                <li>Technical Parameter Tuning</li>
-                                <li>Creative Vision Implementation</li>
-                            </ul>
+                            <div class="details-links">
+                                <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Gallery Website</a>
+                            </div>
                         </div>
-                        <button class="details-close-btn">&times;</button>
+                        <button class="details-close-btn" aria-label="Close details">&times;</button>
                     </div>
                 </div>
                 
-                <!-- AI Agents Application -->
+                <!-- Project 3: AI Agents Application (Placeholder) -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/projects/ai-agents-thumbnail.jpg" alt="AI Agents Application" loading="lazy">
+                        <img src="images/projects/project-ai-agents.jpg" alt="AI Agents Application" loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">AI Agents Application</h3>
-                        <p class="project-description">An innovative platform for deploying customized AI agents to automate workflows and enhance productivity.</p>
+                        <p class="project-description">A platform for deploying and managing specialized AI agents for various tasks, showcasing advanced prompt engineering and system design.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">AI/ML</span>
-                            <span class="tech-tag">Web Development</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Claude API</span>
+                            <span class="tech-tag">React</span>
                         </div>
-                        <button class="project-details-btn">View Details</button>
+                        <button class="project-details-btn" aria-label="View details for AI Agents Application project">View Details</button>
                     </div>
                     <div class="project-details">
                         <div class="details-content">
                             <h4>AI Agents Application</h4>
-                            <p><em>Coming Soon!</em> This project is currently in development. More details will be available in the near future.</p>
+                            <p>A modular platform for deploying, configuring, and orchestrating specialized AI agents that can perform a variety of tasks autonomously or semi-autonomously.</p>
                             
-                            <p>The AI Agents Application will be a platform for creating, deploying, and managing custom AI agents for various workflows and tasks.</p>
+                            <h5>The Challenge</h5>
+                            <ul>
+                                <li>Creating reliable and specialized AI agents requires significant prompt engineering expertise</li>
+                                <li>Managing multiple agents with different capabilities presents coordination challenges</li>
+                                <li>Ensuring consistent performance across different LLM backends</li>
+                            </ul>
+                            
+                            <h5>The Solution</h5>
+                            <ul>
+                                <li>Unified platform for deploying and managing purpose-built AI agents</li>
+                                <li>System for composing multiple agents into workflows</li>
+                                <li>Standardized prompt templates and evaluation frameworks</li>
+                            </ul>
+                            
+                            <div class="details-gallery">
+                                <img src="images/projects/ai-agents-detail.jpg" alt="AI Agents Application Interface" loading="lazy">
+                            </div>
+                            
+                            <h5>Key Features</h5>
+                            <ul>
+                                <li>Library of pre-built agent templates for common tasks</li>
+                                <li>Visual workflow designer for agent composition</li>
+                                <li>Performance monitoring and prompt optimization tools</li>
+                            </ul>
                             
                             <div class="details-tech-list">
-                                <h5>Planned Technologies</h5>
+                                <h5>Technologies Used</h5>
                                 <ul>
-                                    <li>Python Backend</li>
-                                    <li>Modern Frontend Framework</li>
-                                    <li>AI/ML Integration</li>
-                                    <li>API Development</li>
+                                    <li>Backend: Python, FastAPI, LangChain</li>
+                                    <li>Frontend: React, TypeScript</li>
+                                    <li>AI/LLM: Claude API, OpenAI API</li>
+                                    <li>Infrastructure: Docker, AWS</li>
                                 </ul>
                             </div>
                             
-                            <h5>Anticipated Features</h5>
-                            <ul class="details-features">
-                                <li>Custom Agent Creation</li>
-                                <li>Workflow Automation</li>
-                                <li>Integration Capabilities</li>
-                                <li>Performance Analytics</li>
-                            </ul>
+                            <div class="details-links">
+                                <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Coming Soon</a>
+                            </div>
                         </div>
-                        <button class="details-close-btn">&times;</button>
+                        <button class="details-close-btn" aria-label="Close details">&times;</button>
                     </div>
                 </div>
             </div>
@@ -257,11 +297,11 @@
             <h2 class="section-title">Skills</h2>
             <div class="skills-container">
                 <div class="skills-tabs">
-                    <button class="tab-btn active" data-tab="development">Development</button>
-                    <button class="tab-btn" data-tab="prompt-engineering">Prompt Engineering</button>
+                    <button class="tab-btn active" data-tab="development" aria-selected="true">Development</button>
+                    <button class="tab-btn" data-tab="prompt-engineering" aria-selected="false">Prompt Engineering</button>
                 </div>
                 
-                <div class="tab-content active" id="development-tab">
+                <div class="tab-content active" id="development-tab" aria-labelledby="development-tab">
                     <div class="skill-category">
                         <h3>Languages</h3>
                         <div class="skill-list">
@@ -271,7 +311,7 @@
                                     <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
+                                    <div class="skill-progress" style="width: 90%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -280,10 +320,18 @@
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
+                                    <div class="skill-progress" style="width: 75%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" role="progressbar"></div>
                                 </div>
                             </div>
-                            <!-- More skill items -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML/CSS</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" role="progressbar"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -296,10 +344,27 @@
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%"></div>
+                                    <div class="skill-progress" style="width: 70%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" role="progressbar"></div>
                                 </div>
                             </div>
-                            <!-- More skill items -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Flask</span>
+                                    <span class="skill-level">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">LangChain</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" role="progressbar"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -312,7 +377,7 @@
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
+                                    <div class="skill-progress" style="width: 80%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -321,15 +386,23 @@
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
+                                    <div class="skill-progress" style="width: 75%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" role="progressbar"></div>
                                 </div>
                             </div>
-                            <!-- More skill items -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">SQLite</span>
+                                    <span class="skill-level">Expert</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" role="progressbar"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="tab-content" id="prompt-engineering-tab">
+                <div class="tab-content" id="prompt-engineering-tab" aria-labelledby="prompt-engineering-tab">
                     <div class="skill-category">
                         <h3>LLMs Used</h3>
                         <div class="skill-list">
@@ -339,7 +412,7 @@
                                     <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
+                                    <div class="skill-progress" style="width: 90%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -348,7 +421,7 @@
                                     <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
+                                    <div class="skill-progress" style="width: 85%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -357,16 +430,7 @@
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Deepseek & Qwen Models</span>
-                                    <span class="skill-level">Intermediate</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 65%"></div>
+                                    <div class="skill-progress" style="width: 80%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" role="progressbar"></div>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +445,7 @@
                                     <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
+                                    <div class="skill-progress" style="width: 90%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -390,67 +454,58 @@
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
+                                    <div class="skill-progress" style="width: 80%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">Iterative</span>
+                                    <span class="skill-name">Iterative Refinement</span>
                                     <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
+                                    <div class="skill-progress" style="width: 85%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
                                     <span class="skill-name">Zero-shot with Rich Context</span>
-                                    <span class="skill-level">Advanced</span>
+                                    <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
+                                    <div class="skill-progress" style="width: 90%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" role="progressbar"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="skill-category">
-                        <h3>Use Cases</h3>
+                        <h3>Media Generation</h3>
                         <div class="skill-list">
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">Code Generation</span>
+                                    <span class="skill-name">Leonardo AI</span>
                                     <span class="skill-level">Expert</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
+                                    <div class="skill-progress" style="width: 90%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">Creative Writing/Documentation</span>
+                                    <span class="skill-name">Google Veo 2</span>
                                     <span class="skill-level">Advanced</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
+                                    <div class="skill-progress" style="width: 75%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" role="progressbar"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">AI Image Generation</span>
-                                    <span class="skill-level">Advanced</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">AI Video Generation</span>
+                                    <span class="skill-name">Suno AI</span>
                                     <span class="skill-level">Intermediate</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 65%"></div>
+                                    <div class="skill-progress" style="width: 65%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65" role="progressbar"></div>
                                 </div>
                             </div>
                         </div>
@@ -468,26 +523,25 @@
                 <div class="contact-info">
                     <p>Feel free to reach out for collaborations, job opportunities, or just to say hello!</p>
                     <div class="contact-links">
-                        <a href="mailto:email@example.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
+                        <a href="mailto:email@example.com" class="contact-link" aria-label="Email me">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             <span>email@example.com</span>
                         </a>
-                        <a href="https://github.com/faturrachman-dev" target="_blank" class="contact-link">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/faturrachman-dev" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="View my GitHub profile">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                             <span>GitHub</span>
                         </a>
-                        <a href="https://linkedin.com/" target="_blank" class="contact-link">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="View my LinkedIn profile">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
                             <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
                 <div class="contact-whatsapp">
                     <h3>Quick Message via WhatsApp</h3>
-                    <a href="https://wa.me/+6281234567890?text=Hello%20Faturrachman,%20I%20saw%20your%20portfolio%20website%20and%20would%20like%20to%20connect." target="_blank" class="btn btn-primary whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Send Message
+                    <a href="https://wa.me/123456789" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Send message on WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Send Message
                     </a>
-                    <p class="whatsapp-info">Send me a quick message on WhatsApp and I'll get back to you as soon as possible.</p>
                 </div>
             </div>
         </div>
@@ -510,6 +564,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html> 

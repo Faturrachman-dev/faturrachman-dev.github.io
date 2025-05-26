@@ -14,8 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     const projectDetailsBtns = document.querySelectorAll('.project-details-btn');
-    const projectDetailsCloseBtn = document.querySelector('.details-close-btn');
-    const projectDetails = document.querySelector('.project-details');
+    const projectDetailsCloseBtns = document.querySelectorAll('.details-close-btn');
+    const projectDetails = document.querySelectorAll('.project-details');
+
+    // Performance optimization: Debounce function to limit function calls
+    const debounce = (func, delay) => {
+        let timeout;
+        return function() {
+            const context = this;
+            const args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), delay);
+        };
+    };
 
     // ===== Navigation Functions =====
     
@@ -25,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
             const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
             navToggle.setAttribute('aria-expanded', !isExpanded);
+            
+            // Toggle aria-hidden on the nav links when mobile menu is toggled
+            navLinks.setAttribute('aria-hidden', isExpanded);
         });
     }
 
@@ -33,17 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             navToggle.setAttribute('aria-expanded', 'false');
+            navLinks.setAttribute('aria-hidden', 'true');
         });
     });
 
     // Navbar background on scroll
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', debounce(() => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }, 10));
 
     // Active navigation link based on scroll position
     function updateActiveNavLink() {
@@ -60,14 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
         
         navLinksList.forEach(link => {
             link.classList.remove('active');
+            link.setAttribute('aria-current', 'false');
+            
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
             }
         });
     }
 
     // Add scroll event for active nav link update
-    window.addEventListener('scroll', updateActiveNavLink);
+    window.addEventListener('scroll', debounce(updateActiveNavLink, 100));
 
     // ===== Skills Section Functions =====
     
@@ -87,14 +105,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tab functionality for skills section
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            
             // Remove active class from all tabs and contents
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.setAttribute('aria-hidden', 'true');
+            });
             
             // Add active class to selected tab and content
             button.classList.add('active');
-            const tabId = `${button.getAttribute('data-tab')}-tab`;
-            document.getElementById(tabId).classList.add('active');
+            button.setAttribute('aria-selected', 'true');
+            
+            const contentElement = document.getElementById(`${tabId}-tab`);
+            contentElement.classList.add('active');
+            contentElement.setAttribute('aria-hidden', 'false');
             
             // Re-animate the skill bars in the newly visible tab
             animateSkillBars();
@@ -112,76 +142,139 @@ document.addEventListener('DOMContentLoaded', () => {
             if (projectDetails) {
                 projectDetails.style.display = 'flex';
                 document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                
+                // Set focus on the close button for accessibility
+                const closeBtn = projectDetails.querySelector('.details-close-btn');
+                if (closeBtn) {
+                    setTimeout(() => closeBtn.focus(), 100);
+                }
+                
+                // For accessibility
+                projectDetails.setAttribute('aria-hidden', 'false');
             }
         });
     });
 
     // Close project details modal
-    if (projectDetailsCloseBtn) {
-        projectDetailsCloseBtn.addEventListener('click', () => {
-            projectDetails.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        });
-    }
-
-    // Close modal when clicking outside content
-    if (projectDetails) {
-        projectDetails.addEventListener('click', (e) => {
-            if (e.target === projectDetails) {
+    projectDetailsCloseBtns.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const projectDetails = e.target.closest('.project-details');
+            if (projectDetails) {
                 projectDetails.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                projectDetails.setAttribute('aria-hidden', 'true');
+                
+                // Return focus to the button that opened the modal
+                const projectCard = projectDetails.closest('.project-card');
+                const openButton = projectCard.querySelector('.project-details-btn');
+                if (openButton) {
+                    openButton.focus();
+                }
             }
         });
-    }
+    });
+
+    // Close modal when clicking outside content
+    projectDetails.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                modal.setAttribute('aria-hidden', 'true');
+                
+                // Return focus to the button that opened the modal
+                const projectCard = modal.closest('.project-card');
+                const openButton = projectCard.querySelector('.project-details-btn');
+                if (openButton) {
+                    openButton.focus();
+                }
+            }
+        });
+    });
 
     // Close modal on Escape key press
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && projectDetails && projectDetails.style.display === 'flex') {
-            projectDetails.style.display = 'none';
-            document.body.style.overflow = 'auto';
+        if (e.key === 'Escape') {
+            projectDetails.forEach(modal => {
+                if (modal.style.display === 'flex') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    modal.setAttribute('aria-hidden', 'true');
+                    
+                    // Return focus to the button that opened the modal
+                    const projectCard = modal.closest('.project-card');
+                    const openButton = projectCard.querySelector('.project-details-btn');
+                    if (openButton) {
+                        openButton.focus();
+                    }
+                }
+            });
         }
     });
 
     // ===== Intersection Observer for Animation =====
     
-    // Set up observer for elements that should animate when in view
-    const animateOnScroll = () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Check if it's the skills section
-                    if (entry.target.classList.contains('skills-section')) {
-                        animateSkillBars();
+    // Check if Intersection Observer is supported
+    if ('IntersectionObserver' in window) {
+        // Set up observer for elements that should animate when in view
+        const animateOnScroll = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Check if it's the skills section
+                        if (entry.target.classList.contains('skills-section')) {
+                            animateSkillBars();
+                        }
+                        
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target); // Stop observing once animated
                     }
-                    
-                    entry.target.classList.add('animate');
-                    observer.unobserve(entry.target); // Stop observing once animated
-                }
+                });
+            }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+            
+            // Observe all sections for animation
+            sections.forEach(section => {
+                observer.observe(section);
             });
-        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
-        
-        // Observe all sections for animation
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    };
+        };
 
-    // Initialize the animations
-    animateOnScroll();
+        // Initialize the animations
+        animateOnScroll();
+    } else {
+        // Fallback for browsers that don't support Intersection Observer
+        sections.forEach(section => {
+            section.classList.add('animate');
+        });
+        
+        // Animate skill bars immediately
+        setTimeout(animateSkillBars, 500);
+    }
 
     // Smooth scrolling for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+            
+            if (targetId === '#') return; // Ignore links with just "#"
+            
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // Check if browser supports smooth scrolling
+                if ('scrollBehavior' in document.documentElement.style) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    // Fallback for browsers that don't support smooth scrolling
+                    window.scrollTo(0, targetElement.offsetTop - 70); // Account for fixed header
+                }
             }
         });
     });
+    
+    // Initialize page
+    updateActiveNavLink(); // Set the initial active nav link
 }); 
