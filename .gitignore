@@ -1,4 +1,7 @@
 .cursorignore
+.cursor/** */
 memory-bank/
 .prd/
 .vscode
+.github/
+/.cursor
