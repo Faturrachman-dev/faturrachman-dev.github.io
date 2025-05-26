@@ -1,1 +1,4 @@
+.cursorignore
 memory-bank/
+.prd/
+.vscode
