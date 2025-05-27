@@ -140,6 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const projectDetails = projectCard.querySelector('.project-details');
             
             if (projectDetails) {
+                // Move the project details modal to the body for proper modal behavior
+                document.body.appendChild(projectDetails);
+                
+                // Force a reflow before adding display:flex to trigger the CSS transition
+                void projectDetails.offsetWidth;
+                
                 projectDetails.style.display = 'flex';
                 document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
                 
@@ -160,16 +166,31 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const projectDetails = e.target.closest('.project-details');
             if (projectDetails) {
-                projectDetails.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
-                projectDetails.setAttribute('aria-hidden', 'true');
+                // Start the closing animation
+                projectDetails.style.opacity = '0';
                 
-                // Return focus to the button that opened the modal
-                const projectCard = projectDetails.closest('.project-card');
-                const openButton = projectCard.querySelector('.project-details-btn');
-                if (openButton) {
-                    openButton.focus();
-                }
+                // Wait for the animation to complete before hiding
+                setTimeout(() => {
+                    projectDetails.style.display = 'none';
+                    projectDetails.style.opacity = ''; // Reset for next open
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                    projectDetails.setAttribute('aria-hidden', 'true');
+                    
+                    // Get the related project card by data attribute
+                    const projectId = projectDetails.getAttribute('data-project-id');
+                    const projectCard = document.querySelector(`.project-card[data-project-id="${projectId}"]`);
+                    
+                    // Move the details element back to its original project card
+                    if (projectCard) {
+                        projectCard.appendChild(projectDetails);
+                        
+                        // Return focus to the button that opened the modal
+                        const openButton = projectCard.querySelector('.project-details-btn');
+                        if (openButton) {
+                            openButton.focus();
+                        }
+                    }
+                }, 300); // Match this to your CSS transition duration
             }
         });
     });
@@ -178,16 +199,31 @@ document.addEventListener('DOMContentLoaded', () => {
     projectDetails.forEach(modal => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                modal.setAttribute('aria-hidden', 'true');
+                // Start the closing animation
+                modal.style.opacity = '0';
                 
-                // Return focus to the button that opened the modal
-                const projectCard = modal.closest('.project-card');
-                const openButton = projectCard.querySelector('.project-details-btn');
-                if (openButton) {
-                    openButton.focus();
-                }
+                // Wait for the animation to complete before hiding
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.style.opacity = ''; // Reset for next open
+                    document.body.style.overflow = 'auto';
+                    modal.setAttribute('aria-hidden', 'true');
+                    
+                    // Get the related project card by data attribute
+                    const projectId = modal.getAttribute('data-project-id');
+                    const projectCard = document.querySelector(`.project-card[data-project-id="${projectId}"]`);
+                    
+                    // Move the details element back to its original project card
+                    if (projectCard) {
+                        projectCard.appendChild(modal);
+                        
+                        // Return focus to the button that opened the modal
+                        const openButton = projectCard.querySelector('.project-details-btn');
+                        if (openButton) {
+                            openButton.focus();
+                        }
+                    }
+                }, 300); // Match this to your CSS transition duration
             }
         });
     });
@@ -197,16 +233,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             projectDetails.forEach(modal => {
                 if (modal.style.display === 'flex') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    modal.setAttribute('aria-hidden', 'true');
+                    // Start the closing animation
+                    modal.style.opacity = '0';
                     
-                    // Return focus to the button that opened the modal
-                    const projectCard = modal.closest('.project-card');
-                    const openButton = projectCard.querySelector('.project-details-btn');
-                    if (openButton) {
-                        openButton.focus();
-                    }
+                    // Wait for the animation to complete before hiding
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        modal.style.opacity = ''; // Reset for next open
+                        document.body.style.overflow = 'auto';
+                        modal.setAttribute('aria-hidden', 'true');
+                        
+                        // Get the related project card by data attribute
+                        const projectId = modal.getAttribute('data-project-id');
+                        const projectCard = document.querySelector(`.project-card[data-project-id="${projectId}"]`);
+                        
+                        // Move the details element back to its original project card
+                        if (projectCard) {
+                            projectCard.appendChild(modal);
+                            
+                            // Return focus to the button that opened the modal
+                            const openButton = projectCard.querySelector('.project-details-btn');
+                            if (openButton) {
+                                openButton.focus();
+                            }
+                        }
+                    }, 300); // Match this to your CSS transition duration
                 }
             });
         }
