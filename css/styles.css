@@ -471,6 +471,12 @@ section {
   justify-content: center;
   align-items: center;
   padding: var(--space-xl);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+}
+
+.project-details[style*="display: flex"] {
+  opacity: 1;
 }
 
 .details-content {
@@ -482,6 +488,13 @@ section {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  transform: translateY(20px);
+  transition: transform var(--transition-medium);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-details[style*="display: flex"] .details-content {
+  transform: translateY(0);
 }
 
 .details-content h5 {
